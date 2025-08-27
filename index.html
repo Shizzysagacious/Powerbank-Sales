@@ -34,7 +34,6 @@
         header {
             text-align: center;
             padding: 30px 0;
-            animation: fadeIn 1.5s ease-in-out;
         }
         
         .logo {
@@ -44,7 +43,7 @@
         }
         
         h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             margin-bottom: 10px;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -52,7 +51,7 @@
         }
         
         .tagline {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: #00cc66;
             margin-bottom: 20px;
             font-weight: 300;
@@ -73,12 +72,6 @@
             width: 32%;
             text-align: center;
             margin-bottom: 20px;
-            transition: transform 0.3s ease;
-        }
-        
-        .benefit-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 204, 102, 0.3);
         }
         
         .benefit-icon {
@@ -138,25 +131,6 @@
             flex: 1;
         }
         
-        .file-upload {
-            border: 2px dashed #00cc66;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        
-        .file-upload:hover {
-            background: rgba(0, 204, 102, 0.1);
-        }
-        
-        .file-upload i {
-            font-size: 2.5rem;
-            color: #00cc66;
-            margin-bottom: 10px;
-        }
-        
         .submit-btn {
             background: #00cc66;
             color: #000;
@@ -193,13 +167,6 @@
             border-radius: 10px;
             border: 1px solid #00cc66;
             width: 30%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .product:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 204, 102, 0.3);
         }
         
         .product img {
@@ -223,19 +190,7 @@
             border-radius: 5px;
             padding: 8px 12px;
             font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
             margin-bottom: 5px;
-        }
-        
-        .payment-option:hover {
-            background: rgba(0, 204, 102, 0.4);
-        }
-        
-        .payment-option.selected {
-            background: #00cc66;
-            color: #000;
-            font-weight: bold;
         }
         
         .social-section {
@@ -315,55 +270,12 @@
             font-size: 1.2rem;
         }
         
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .modal-content {
-            background: rgba(0, 0, 0, 0.9);
-            border: 2px solid #00cc66;
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            max-width: 500px;
-            width: 90%;
-        }
-        
-        .modal-title {
-            font-size: 1.8rem;
+        .success-message {
             color: #00cc66;
-            margin-bottom: 20px;
-        }
-        
-        .modal-close {
-            background: #00cc66;
-            color: #000;
-            border: none;
-            padding: 12px 25px;
-            font-size: 1rem;
-            border-radius: 50px;
-            cursor: pointer;
             font-weight: bold;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-        }
-        
-        .modal-close:hover {
-            background: #00ff80;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+            margin: 20px 0;
+            text-align: center;
+            display: none;
         }
         
         @media (max-width: 768px) {
@@ -434,13 +346,13 @@
         
         <div class="powerbank-showcase">
             <div class="product">
-                <img src="assets/images/oraimo20000.png" alt="oraimo Powerbank 20000mAh" onerror="this.src='https://via.placeholder.com/200x180/00cc66/000000?text=oraimo+20000mAh'">
+                <img src="oraimo20000.png" alt="oraimo Powerbank 20000mAh" onerror="this.src='https://via.placeholder.com/200x180/00cc66/000000?text=oraimo+20000mAh'">
                 <h3>oraimo 20000mAh</h3>
                 <p>₦17,000</p>
                 <div class="payment-options">
-                    <div class="payment-option" onclick="selectPayment(this, '30%')">30%: ₦5,100</div>
-                    <div class="payment-option" onclick="selectPayment(this, '50%')">50%: ₦8,500</div>
-                    <div class="payment-option" onclick="selectPayment(this, '80%')">80%: ₦13,600</div>
+                    <div class="payment-option">30%: ₦5,100</div>
+                    <div class="payment-option">50%: ₦8,500</div>
+                    <div class="payment-option">80%: ₦13,600</div>
                 </div>
             </div>
         </div>
@@ -448,10 +360,17 @@
         <div class="form-container">
             <h2 class="form-title">Apply for Your Powerbank Today</h2>
             
-            <form id="studentForm" action="https://formsubmit.co/775f3bedfae1cda32aaa9c634e1a4be0" method="POST" enctype="multipart/form-data">
+            <div class="success-message" id="successMessage">
+                <i class="fas fa-check-circle"></i> Thank you for your application! We'll contact you shortly.
+            </div>
+            
+            <!-- SIMPLE FORMSUBMIT FORM - NO COMPLEX ACTIVATION NEEDED -->
+            <form action="https://formsubmit.co/thethreeplugs@gmail.com" method="POST">
+                <!-- Required FormSubmit fields -->
                 <input type="hidden" name="_subject" value="New oraimo Powerbank Application">
                 <input type="hidden" name="_template" value="table">
                 <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_autoresponse" value="Thank you for your oraimo Powerbank application! We'll contact you within 24 hours.">
                 
                 <div class="form-row">
                     <div class="form-group">
@@ -492,26 +411,6 @@
                 <div class="form-group">
                     <label for="address">Hostel Address</label>
                     <input type="text" id="address" name="address" required placeholder="Hall of residence, room number">
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Upload Student ID Card</label>
-                        <div class="file-upload" id="idCardUpload">
-                            <i class="fas fa-id-card"></i>
-                            <p>Click to upload image of your student ID card</p>
-                            <input type="file" name="idCard" accept="image/*" style="display: none;" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Upload Recent Photo</label>
-                        <div class="file-upload" id="photoUpload">
-                            <i class="fas fa-camera"></i>
-                            <p>Click to upload a recent passport photograph</p>
-                            <input type="file" name="photo" accept="image/*" style="display: none;" required>
-                        </div>
-                    </div>
                 </div>
                 
                 <div class="form-group">
@@ -556,115 +455,48 @@
         <div class="marketer-section">
             <h3>Interested in Earning with oraimo?</h3>
             <p>Join our campus marketer program and earn commissions for every sale you refer!</p>
-            <button class="marketer-btn" onclick="showMarketerModal()">Become a Marketer</button>
-        </div>
-        
-        <footer>
-            <p>&copy; 2025 <span class="oraimo-brand">oraimo</span> Nigeria. All rights reserved.</p>
-            <p>Powered by <span class="oraimo-brand">oraimo</span> - Stay Powered, Stay Connected</p>
-        </footer>
-    </div>
-    
-    <!-- Marketer Modal -->
-    <div class="modal" id="marketerModal">
-        <div class="modal-content">
-            <h3 class="modal-title">Become an oraimo Campus Marketer</h3>
-            <p>Join our team of campus marketers and earn generous commissions for every sale you refer!</p>
-            <p>Fill out the form below and we'll contact you with more details:</p>
             
-            <form id="marketerForm" action="https://formsubmit.co/775f3bedfae1cda32aaa9c634e1a4be0" method="POST">
+            <!-- Simple FormSubmit form for marketer applications -->
+            <form action="https://formsubmit.co/thethreeplugs@gmail.com" method="POST" style="margin-top: 20px;">
                 <input type="hidden" name="_subject" value="New Marketer Application">
                 <input type="hidden" name="_template" value="table">
                 
                 <div class="form-group">
-                    <input type="text" name="name" placeholder="Your Name" required style="width: 100%; margin-top: 15px;">
+                    <input type="text" name="name" placeholder="Your Name" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" name="email" placeholder="Your Email" required style="width: 100%;">
+                    <input type="email" name="email" placeholder="Your Email" required>
                 </div>
                 <div class="form-group">
-                    <input type="tel" name="phone" placeholder="Your Phone Number" required style="width: 100%;">
+                    <input type="tel" name="phone" placeholder="Your Phone Number" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="school" placeholder="Your University" required style="width: 100%;">
+                    <input type="text" name="school" placeholder="Your University" required>
                 </div>
                 
-                <button type="submit" class="modal-close" style="width: 100%;">Submit Application</button>
+                <button type="submit" class="marketer-btn">Submit Application</button>
             </form>
-            
-            <button class="modal-close" onclick="closeModal()" style="margin-top: 10px; background: #333;">Cancel</button>
         </div>
+        
+        <footer>
+            <p>&copy; 2023 <span class="oraimo-brand">oraimo</span> Nigeria. All rights reserved.</p>
+            <p>Powered by <span class="oraimo-brand">oraimo</span> - Stay Powered, Stay Connected</p>
+        </footer>
     </div>
 
     <script>
-        // File upload functionality
-        document.getElementById('idCardUpload').addEventListener('click', function() {
-            this.querySelector('input[type="file"]').click();
-        });
-        
-        document.getElementById('photoUpload').addEventListener('click', function() {
-            this.querySelector('input[type="file"]').click();
-        });
-        
-        // Form submission
-        document.getElementById('studentForm').addEventListener('submit', function(e) {
-            // Basic validation
-            const fullName = document.getElementById('fullName').value;
-            const matricNumber = document.getElementById('matricNumber').value;
-            const email = document.getElementById('email').value;
-            const paymentPlan = document.getElementById('paymentPlan').value;
-            
-            if (!fullName || !matricNumber || !email || !paymentPlan) {
-                e.preventDefault();
-                alert('Please fill all required fields');
-                return;
-            }
-            
-            // If form is valid, it will submit to FormSubmit
-        });
-        
-        // Payment option selection
-        function selectPayment(element, percentage) {
-            // Remove selected class from all options
-            const options = document.querySelectorAll('.payment-option');
-            options.forEach(opt => opt.classList.remove('selected'));
-            
-            // Add selected class to clicked option
-            element.classList.add('selected');
-            
-            // Update the payment plan select field
-            document.getElementById('paymentPlan').value = percentage;
-        }
-        
-        // Show marketer modal
-        function showMarketerModal() {
-            document.getElementById('marketerModal').style.display = 'flex';
-        }
-        
-        // Close modal
-        function closeModal() {
-            document.querySelectorAll('.modal').forEach(modal => {
-                modal.style.display = 'none';
-            });
-        }
-        
-        // Animation on scroll
+        // Simple form success message
         document.addEventListener('DOMContentLoaded', function() {
-            const benefitCards = document.querySelectorAll('.benefit-card');
-            
-            benefitCards.forEach((card, index) => {
-                card.style.animation = `fadeIn 0.5s ease-in-out ${index * 0.2 + 0.5}s both`;
-            });
-            
-            // Close modal if clicked outside
-            window.addEventListener('click', function(event) {
-                if (event.target.classList.contains('modal')) {
-                    closeModal();
-                }
-            });
+            // Check if form was submitted
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('success') === 'true') {
+                document.getElementById('successMessage').style.display = 'block';
+                // Scroll to success message
+                setTimeout(function() {
+                    document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+                }, 500);
+            }
         });
     </script>
 </body>
 </html>
-
-
